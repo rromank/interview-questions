@@ -32,3 +32,8 @@ Example when a dirty read can occur
     v            v 
               value (x) is now dirty (incorrect)
 ```
+
+---
+
+### Method visibility and @Transactional
+When using proxies, you should apply the `@Transactional` annotation only to methods with public visibility. If you do annotate protected, private or package-visible methods with the `@Transactional` annotation, no error is raised, but the annotated method does not exhibit the configured transactional settings. Consider the use of AspectJ (see below) if you need to annotate non-public methods.
