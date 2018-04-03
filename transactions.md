@@ -41,4 +41,15 @@ When using proxies, you should apply the `@Transactional` annotation only to met
 ---
 
 ### Default proxy mode and fully initialized proxy
-In proxy mode (which is the default), only external method calls coming in through the proxy are intercepted. This means that self-invocation, in effect, a method within the target object calling another method of the target object, will not lead to an actual transaction at runtime even if the invoked method is marked with `@Transactiona`l. Also, the proxy must be fully initialized to provide the expected behaviour so you should not rely on this feature in your initialization code, i.e.` @PostConstruct`.
+In proxy mode (which is the default), only external method calls coming in through the proxy are intercepted. This means that self-invocation, in effect, a method within the target object calling another method of the target object, will not lead to an actual transaction at runtime even if the invoked method is marked with `@Transactional`. Also, the proxy must be fully initialized to provide the expected behaviour so you should not rely on this feature in your initialization code, i.e.` @PostConstruct`.
+
+---
+
+### @Transactional settings
+The `@Transactional` annotation is metadata that specifies that an interface, class, or method must have transactional semantics; for example, "*start a brand new read-only transaction when this method is invoked, suspending any existing transaction*". The default `@Transactional` settings are as follows:
+
+* Propagation setting is `PROPAGATION_REQUIRED`.
+* Isolation level is `ISOLATION_DEFAULT`.
+* Transaction is read/write.
+* Transaction timeout defaults to the default timeout of the underlying transaction system, or to none if timeouts are not supported.
+* Any `RuntimeExceptio`n triggers rollback, and any checked `Exception` does not.
