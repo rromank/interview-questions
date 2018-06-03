@@ -1,0 +1,31 @@
+@startuml
+
+interface Subject {
+    add(Observer)
+    remove(Observer)
+    notify()
+}
+
+note left of Subject::notify
+    "For each
+     registered observer"
+end note
+
+class ConcreteSubject implements Subject {
+    state
+    getState()
+}
+
+interface Observer {
+    update()
+}
+
+class ConcreteObserver implements Observer {
+    observerState
+    update()
+}
+
+Subject .right.> "0..*" Observer : "    notify      "
+ConcreteObserver .left.> ConcreteSubject : observe
+
+@enduml
