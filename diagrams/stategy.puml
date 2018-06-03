@@ -1,0 +1,23 @@
+@startuml
+
+interface Client {
+    Behavior behavior
+
+    execute()
+}
+
+interface Behavior {
+    run()
+}
+
+class ConcreteBehaviorA implements Behavior {
+    run()
+}
+
+class ConcreteBehaviorB implements Behavior {
+    run()
+}
+
+Client -> Behavior
+
+@enduml
