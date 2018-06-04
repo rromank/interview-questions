@@ -1,0 +1,22 @@
+@startuml
+
+interface Component {
+    operation()
+}
+
+class ConcreteComponent implements Component {
+    operation()
+}
+
+interface Decorator extends Component {
+    operation()
+}
+
+class ConcreteDecorator implements Decorator {
+    component
+    operation()
+}
+
+Decorator o-left- Component
+
+@enduml
